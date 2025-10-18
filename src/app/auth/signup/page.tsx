@@ -432,7 +432,7 @@ const Signup = () => {
       let response;
       try {
         response = await fetch(
-          "https://server.bizengo.com/api/auth/signup/buyer",
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/signup/buyer`,
           {
             method: "POST",
             headers: {
@@ -449,7 +449,7 @@ const Signup = () => {
         );
         // Fallback to HTTP for development
         response = await fetch(
-          "http://server.bizengo.com/api/auth/signup/buyer",
+          `${process.env.NEXT_PUBLIC_API_BASE_URL_HTTP}/auth/signup/buyer`,
           {
             method: "POST",
             headers: {
