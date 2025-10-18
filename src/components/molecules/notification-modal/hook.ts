@@ -15,6 +15,8 @@ const defaultValues: NotificationType = {
 
 const TIMEOUT = 5000;
 
+export type UseNotificationModalType = ReturnType<typeof useNotificationModal>
+
 export function useNotificationModal() {
   const [notification, setNotification] = useState<NotificationType>(defaultValues);
 
