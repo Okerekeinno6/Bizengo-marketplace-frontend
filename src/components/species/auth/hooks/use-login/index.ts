@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { DEMO } from "@/constants/DEMO";
 import { useNotificationModal } from "@/components/molecules/notification-modal/hook";
-import { AuthService } from "@/store/services/authApi";
+import { authService } from "@/store/services/authApi";
 
 interface IFormData {
   email: string;
@@ -66,10 +66,12 @@ export function useLogin() {
 
     setSubmitting(true);
 
-    AuthService.login(formData).then((res) => {
-
+    authService.login(formData).then((res) => {
+      console.log("🚀 ~ handleSubmit ~ res:", res)
     })
-      .catch((err) => { })
+      .catch((err) => { 
+        console.log("🚀 ~ handleSubmit ~ err:", err)
+      })
       .finally(() => {
         setSubmitting(false);
       })
