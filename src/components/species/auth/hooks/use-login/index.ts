@@ -3,6 +3,7 @@ import { useRouter } from "next/navigation";
 import { DEMO } from "@/constants/DEMO";
 import { useNotificationModal } from "@/components/molecules/notification-modal/hook";
 import { authService } from "@/store/services/authApi";
+import { userService } from "@/store/services/userApi";
 
 interface IFormData {
   email: string;
@@ -67,10 +68,18 @@ export function useLogin() {
     setSubmitting(true);
 
     authService.login(formData).then((res) => {
-      console.log("🚀 ~ handleSubmit ~ res:", res)
+      console.log("🚀 ~ login ~ res:", res)
+      userService.getProfile(res.access_token).then((res) => {
+        console.log("🚀 ~ getProfile ~ res:", res)
+      }).catch((err) => {
+        console.log("🚀 ~ getProfile ~ err:", err)
+      })
+        .finally(() => {
+          setSubmitting(false);
+        })
     })
-      .catch((err) => { 
-        console.log("🚀 ~ handleSubmit ~ err:", err)
+      .catch((err) => {
+        console.log("🚀 ~ login ~ err:", err)
       })
       .finally(() => {
         setSubmitting(false);

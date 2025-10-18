@@ -1,14 +1,14 @@
-export interface LoginRequestDto {
+export interface ILoginRequest {
   email: string;
   password: string;
   rememberMe?: boolean;
 }
 
-export interface LoginResponseDto {
-  status: string; // success
-  success: boolean;
+export interface ILoginResponse {
   access_token?: string;
+  message: string; // Login successful
   user?: {
+    email: string;
     role: string //admin
   }
 }

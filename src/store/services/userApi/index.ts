@@ -5,14 +5,15 @@ class UserService extends BaseService {
     super('/user')
   }
 
-  async getProfile() {
+  async getProfile(accessToken?: string) {
     try {
       const raw = await fetch(
         `${this.baseUrl}/profile`,
         {
           headers: {
             ...this.headers,
-            Authorization: `Bearer ${localStorage.getItem("adminToken")}`
+            // Authorization: `Bearer ${localStorage.getItem("adminToken")}`
+            Authorization: `Bearer ${accessToken}`
           },
         }
       );

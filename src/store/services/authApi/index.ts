@@ -1,12 +1,12 @@
 import { BaseService } from "../baseApi";
-import { LoginRequestDto } from "./types";
+import { ILoginRequest } from "./types";
 
 class AuthService extends BaseService {
   constructor() {
     super('/auth')
   }
 
-  async login(req: LoginRequestDto) {
+  async login(req: ILoginRequest) {
     try {
       const raw = await fetch(
         `${this.baseUrl}/login`,
