@@ -4,12 +4,14 @@ import { Button } from "@/components/ui/button";
 type VariantType = "info" | "success" | "danger";
 
 type PropsType = {
-  show: boolean;
+  show?: boolean;
   onClose: () => void;
   title: string;
-  message: string;
+  message?: string;
   variant?: VariantType;
 };
+
+export type NotificationModalVariantType = VariantType
 
 export const NotificationModal: React.FC<PropsType> = ({
   show,
